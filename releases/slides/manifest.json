@@ -1,4 +1,4 @@
 {
-  "payload": "{\"app\":\"bento-slides\",\"version\":\"0.9.8\",\"sha256\":\"a89adc25441f547d162688dba0dde9269c99d69909fcf93e33a5e661cb5aae73\",\"url\":\"https://bento.page/releases/slides/Bento_Slides.bento.html\",\"at\":\"2026-07-19T08:17:55.654Z\"}",
-  "sig": "nBwa0n2rjQBeTuChoxdYTBwUrS7qa6sg5pqkiZAndlGoj2D7egTqDlOP0Q7t7vsGDWaLwOQznis8/zdSJdEmLA=="
+  "payload": "{\"app\":\"bento-slides\",\"version\":\"0.9.9\",\"sha256\":\"a1970e19212645b81d2e114dc67b233499ca6fd95910f80eaca5fcb8c8afade4\",\"url\":\"https://bento.page/releases/slides/Bento_Slides.bento.html\",\"at\":\"2026-07-19T08:59:23.231Z\"}",
+  "sig": "Pg5/fgXN9DoELh7B2WpdjsN6JtKIMhHUUKdWbcGXq0PBiZnZ2+JIcuyzhSnOXE+KJHe4m20VlxYX3De/eA2pkQ=="
 }

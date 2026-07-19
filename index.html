@@ -245,6 +245,15 @@ section:not(.paper) .lede b { color: #fff; }
 .card p { font-size: 14.5px; line-height: 1.6; }
 section:not(.paper) .card { background: var(--panel); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35); }
 section:not(.paper) .card h3 { color: #fff; }
+.card ol { margin: 8px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.55; }
+.card ol li { margin: 5px 0; }
+.card .prompt {
+  margin: 11px 0 3px; padding: 11px 13px; border-radius: 10px;
+  background: rgba(13, 27, 46, 0.05); border: 1px solid rgba(13, 27, 46, 0.10);
+  font-size: 13px; line-height: 1.5; color: #33465e; font-style: italic;
+}
+.card code { background: rgba(13, 27, 46, 0.07); border-radius: 4px; padding: 1px 5px; font-size: 12.5px; font-family: ui-monospace, Menlo, monospace; }
+.card .num { color: var(--peach); font-weight: 800; font-style: normal; }
 section:not(.paper) .card p { color: var(--mist); }
 
 /* morph demo — two layouts the tiles glide between */
@@ -626,10 +635,11 @@ body.kdeck header, body.kdeck footer { display: none; }
         <div class="chips rv d2">
           <span class="chip"><b>The format is the API</b></span>
           <span class="chip">No binary .pptx to decode</span>
-          <span class="chip">Agents edit the file in place</span>
-          <a class="chip" href="/agents.md" style="text-decoration:none"><b>bento.page/agents.md</b> — the recipe for your agent</a>
           <span class="chip">Nothing phones home</span>
         </div>
+        <p class="rv d2" style="margin-top:22px">
+          <a class="btn primary" href="/agents.md" style="text-decoration:none">The agent guide → bento.page/agents.md</a>
+        </p>
       </div>
       <div class="codebox rv d1" aria-label="The document format, as it appears inside every file"><span class="c">&lt;!-- inside every .bento.html --&gt;</span>
 &lt;script type=<span class="s">"application/bento+json"</span> id=<span class="s">"bento-doc"</span>&gt;
@@ -646,6 +656,34 @@ body.kdeck header, body.kdeck footer { display: none; }
 <span class="c">// and in the console:</span>
 window.bento.doc          <span class="c">// read</span>
 window.bento.loadDoc(json) <span class="c">// write, undoable</span></div>
+    </div>
+
+    <!-- how to actually drive it with AI -->
+    <h3 class="rv" style="margin-top:52px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#C25B3F">Two ways to build with AI</h3>
+    <div class="cards rv">
+      <div class="card">
+        <div class="tick"></div>
+        <h3>Paste into a chatbot</h3>
+        <p>No install — works with Claude, ChatGPT, anything.</p>
+        <ol>
+          <li><b>About → Copy document JSON</b></li>
+          <li>Paste it into the chat with your ask ↓</li>
+          <li><b>About → Replace document from JSON</b> (⌘Z undoes)</li>
+        </ol>
+        <div class="prompt">“Here's my Bento deck JSON. Following <b>bento.page/agents.md</b>, add a slide comparing Q3 and Q4 signups as a bar chart, morphing from the previous slide. Return only the updated JSON.”</div>
+      </div>
+      <div class="card">
+        <div class="tick"></div>
+        <h3>Point an agent at the file</h3>
+        <p>Any file-editing harness — Claude Code, Cursor, your own.</p>
+        <div class="prompt">“Read <b>bento.page/agents.md</b>, then edit <code>Deck.bento.html</code>: turn the pricing table into a chart and add speaker notes to every slide.”</div>
+        <p style="margin-top:10px">It rewrites the <code>#bento-doc</code> JSON block in place — the rest of the file (the app) is left untouched. No export, no re-import.</p>
+      </div>
+      <div class="card">
+        <div class="tick"></div>
+        <h3>The <code>agents.md</code> recipe</h3>
+        <p>One page the model reads first. It maps your material to the right feature — numbers → a <b>chart</b>, a comparison → a <b>table</b>, “before/after” → a <b>morph</b>, a drill-down → a <b>state slide</b> — so you get a real deck, not a wall of text. Claude Code users get it as the <b>bento-deck</b> skill.</p>
+      </div>
     </div>
   </div>
 </section>

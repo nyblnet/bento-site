@@ -631,7 +631,7 @@ body.kdeck header, body.kdeck footer { display: none; }
         <div class="kicker rv">Local-first · AI-native</div>
         <hr class="hairline rv" style="max-width:220px">
         <h2 class="rv">Designed for AI.<br>Entirely optional.</h2>
-        <p class="lede rv d1">Bento is local-first <b>and</b> built for the AI era. The document is plain JSON sitting openly in the file — so a chatbot round-trips it and an agent harness <b>edits the file directly</b>. That's how the gallery above was made. No converters, no uploads, no .pptx archaeology: <b>orders of magnitude leaner</b> than driving PowerPoint with a bot. And if you never touch AI, nothing here ever will either.</p>
+        <p class="lede rv d1">Bento is local-first <b>and</b> built for the AI era. The whole app and its data are one file with plain JSON inside — so you can <b>just drop it into a new chat or project</b> (Cowork, Codex, Gemini…) and it edits the deck, or point a coding agent at it on disk. That's how the gallery above was made. No converters, no uploads, no .pptx archaeology: <b>orders of magnitude leaner</b> than driving PowerPoint with a bot. And if you never touch AI, nothing here ever will either.</p>
         <div class="chips rv d2">
           <span class="chip"><b>The format is the API</b></span>
           <span class="chip">No binary .pptx to decode</span>
@@ -659,25 +659,30 @@ window.bento.loadDoc(json) <span class="c">// write, undoable</span></div>
     </div>
 
     <!-- how to actually drive it with AI -->
-    <h3 class="rv" style="margin-top:52px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#C25B3F">Two ways to build with AI</h3>
+    <h3 class="rv" style="margin-top:52px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#C25B3F">Ways to build it with AI</h3>
     <div class="cards rv">
       <div class="card">
         <div class="tick"></div>
-        <h3>Paste into a chatbot</h3>
-        <p>No install — works with Claude, ChatGPT, anything.</p>
-        <ol>
-          <li><b>About → Copy document JSON</b></li>
-          <li>Paste it into the chat with your ask ↓</li>
-          <li><b>About → Replace document from JSON</b> (⌘Z undoes)</li>
-        </ol>
-        <div class="prompt">“Here's my Bento deck JSON. Following <b>bento.page/agents.md</b>, add a slide comparing Q3 and Q4 signups as a bar chart, morphing from the previous slide. Return only the updated JSON.”</div>
+        <h3>Drop the file in a chat or project</h3>
+        <p>The whole app <i>and</i> its data are one <code>.bento.html</code> — so any assistant that takes a file has everything it needs. Attach it in <b>Cowork</b>, <b>Codex</b>, <b>Gemini</b> or a <b>ChatGPT&nbsp;project</b>, say what you want, get the edited file back.</p>
+        <div class="prompt">“Here's my deck (<code>Deck.bento.html</code>). Following <b>bento.page/agents.md</b>, add a slide comparing Q3 vs Q4 signups as a bar chart that morphs from the previous slide.”</div>
       </div>
       <div class="card">
         <div class="tick"></div>
-        <h3>Point an agent at the file</h3>
-        <p>Any file-editing harness — Claude Code, Cursor, your own.</p>
+        <h3>Let a coding agent edit it on disk</h3>
+        <p>Claude Code, Cursor, or your own harness — pointed straight at the file:</p>
         <div class="prompt">“Read <b>bento.page/agents.md</b>, then edit <code>Deck.bento.html</code>: turn the pricing table into a chart and add speaker notes to every slide.”</div>
-        <p style="margin-top:10px">It rewrites the <code>#bento-doc</code> JSON block in place — the rest of the file (the app) is left untouched. No export, no re-import.</p>
+        <p style="margin-top:10px">It rewrites just the <code>#bento-doc</code> JSON block — the app around it is untouched. No export, no re-import.</p>
+      </div>
+      <div class="card">
+        <div class="tick"></div>
+        <h3>Chat-only? Paste the JSON</h3>
+        <p>For an assistant with no file support, round-trip the document by hand:</p>
+        <ol>
+          <li><b>About → Copy document JSON</b></li>
+          <li>Paste it into the chat with your ask</li>
+          <li><b>About → Replace document from JSON</b> — ⌘Z undoes</li>
+        </ol>
       </div>
       <div class="card">
         <div class="tick"></div>

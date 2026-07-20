@@ -1,6 +1,6 @@
 # Bento Slides — for AI agents
 
-**Guide version `0.9.20`** · document format `bento/slides` (v1). This
+**Guide version `1.0.0`** · document format `bento/slides` (v1). This
 guide matches the Bento Slides shell of the same version. A deck's `#bento-doc`
 JSON is always the source of truth — if it was written by a newer shell it may
 carry features beyond this guide; unknown keys are ignored, never fatal.
@@ -162,7 +162,7 @@ each kind of content to the feature built for it:
 - **text**: `html` (inline `<b> <i> <br>` ok), `fontSize`, `fontFamily`,
   `fontWeight`, `color`, `align` (`left|center|right`), `valign`,
   `lineHeight`, optional `letterSpacing`.
-- **shape**: `shape` = `rect|ellipse|triangle|line|path`, `fill`, `stroke`,
+- **shape**: `shape` = `rect|ellipse|triangle|arrow|line|path`, `fill`, `stroke`,
   `strokeWidth`, `radius` (rect corner). Optional `fillGradient`
   `{angle, stops:[{at:0..1, color}]}` (CSS-convention angle). Lines take
   their color from `fill` and draw horizontally across the box (rotate for

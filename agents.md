@@ -1,6 +1,6 @@
 # Bento Slides — for AI agents
 
-**Guide version `1.0.5`** · document format `bento/slides` (v1). This
+**Guide version `1.0.6`** · document format `bento/slides` (v1). This
 guide matches the Bento Slides shell of the same version. A deck's `#bento-doc`
 JSON is always the source of truth — if it was written by a newer shell it may
 carry features beyond this guide; unknown keys are ignored, never fatal.

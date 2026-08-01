@@ -1,4 +1,4 @@
 {
-  "payload": "{\"app\":\"bento-slides\",\"version\":\"1.0.11\",\"sha256\":\"743dc96d7ad9a4f922303b828fb507b6a4288f04dac9bb4970513030ed4fa3e2\",\"url\":\"https://bento.page/releases/slides/Bento_Slides.bento.html\",\"notes\":\"• LaTeX maths in any text box, rendered as MathML.\\n• Symbol-level formula morphing.\\n• Twenty-one installable language packs, each hash-signed.\\n• The editor is usable at 402px — the topbar folds instead of overflowing.\\n• Decks carry a page-one preview, so Finder and Files thumbnail them properly.\\n…and 13 more\",\"at\":\"2026-07-27T08:02:28.068Z\"}",
-  "sig": "RGzjLPIMFQN/kvG6n9Xmi8NuKtHL/9ukooCdvmE4ABkC+w/0l+9lf8GOeNWGg6E0IEmsYiq5bdftD7Lwent4SQ=="
+  "payload": "{\"app\":\"bento-slides\",\"version\":\"1.0.12\",\"sha256\":\"dc0be3e54b51bbb88d443d8676e3c5283481b398cb5c576257cca0a91051f8dd\",\"url\":\"https://bento.page/releases/slides/Bento_Slides.bento.html\",\"notes\":\"• A laser pointer while you present.\\n• Decks thumbnail properly on iPhone and iPad.\\n• Count-up numbers keep their thousands separators.\\n• The tab tells you which file you are editing.\\n• Save offers the file you are looking at.\\n…and 6 more\",\"at\":\"2026-08-01T21:58:39.962Z\"}",
+  "sig": "1Ht+yjbAobGuJEhxuisSjL3zRihYIxX/A5lJbOnDg3t+yHZwu+DrqpWwd+zD9tt+cHtBN/OTDeUjfoWKQQUymQ=="
 }

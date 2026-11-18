@@ -19,9 +19,31 @@ ul { margin: 0 0 18px 1.2em; line-height: 1.9; }
 .ghost { display: inline-block; margin-left: 12px; padding: 14px 24px; border-radius: 999px; color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); font-weight: 600; }
 .fine { margin-top: 24px; font-size: 13px; line-height: 1.7; color: rgba(182,193,210,0.55); }
 .fine a { color: rgba(182,193,210,0.8); }
+/* Language switcher — fixed to the viewport's top-right */
+.lang-switch{position:fixed;top:20px;right:20px;z-index:20}
+.lang-switch details{position:relative}
+.lang-switch summary{list-style:none;cursor:pointer;color:rgba(182,193,210,.7);font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(13,27,46,.6);backdrop-filter:blur(6px)}
+.lang-switch summary::-webkit-details-marker{display:none}
+.lang-switch summary::after{content:"";width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.7;transition:transform .15s}
+.lang-switch summary:hover,.lang-switch details[open] summary{color:#fff;border-color:rgba(255,255,255,.3)}
+.lang-switch details[open] summary::after{transform:rotate(180deg)}
+.lang-switch summary:focus-visible{outline:2px solid #FF9E8A;outline-offset:2px}
+.lang-switch ul{position:absolute;right:0;top:calc(100% + 6px);min-width:150px;margin:0;padding:6px;list-style:none;background:#16273E;border:1px solid rgba(182,193,210,.16);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:10}
+.lang-switch li a{display:block;padding:8px 10px;border-radius:6px;color:rgba(196,206,221,.92);text-decoration:none;font-size:14px;white-space:nowrap}
+.lang-switch li a:hover{background:#1B2F49;color:#fff}
+.lang-switch li a[aria-current="page"]{color:#FF9E8A;font-weight:600}
 </style>
 </head>
 <body>
+  <div class="lang-switch">
+  <details>
+    <summary>English</summary>
+    <ul>
+      <li><a href="https://bento.page/guestbook" aria-current="page">English</a></li>
+      <li><a href="https://bento.page/zh-cn/guestbook" lang="zh-CN">简体中文</a></li>
+    </ul>
+  </details>
+</div>
 <div class="card">
   <div class="kicker">A PUBLIC EXPERIMENT</div>
   <h1>One deck. Everyone.</h1>

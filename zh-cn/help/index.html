@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>帮助 — bento/slides — bento.page</title>
+<meta name="description" content="如何使用 bento/slides:元素，平滑变换，图表，数据表格，媒体，演示，实时协作，用 AI 构建，以及键盘快捷键。">
+<link rel="canonical" href="https://bento.page/help">
+<meta name="theme-color" content="#0D1B2E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="bento">
+<meta property="og:url" content="https://bento.page/help">
+<meta property="og:title" content="Help — bento/slides">
+<meta property="og:description" content="如何使用 bento/slides:元素，平滑变换，图表，数据表格，媒体，演示，实时协作，用 AI 构建，以及键盘快捷键。">
+<meta property="og:image" content="https://bento.page/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bento.page/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316273E'/%3E%3Crect x='5' y='5' width='7' height='22' rx='2.5' fill='%235E7699'/%3E%3Crect x='14' y='5' width='13' height='10' rx='2.5' fill='%23FF9E8A'/%3E%3Crect x='14' y='17' width='13' height='10' rx='2.5' fill='%23F0EBE0'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0D1B2E; --panel:#16273E; --panel2:#1B2F49; --line:rgba(182,193,210,.16);
+  --text:rgba(196,206,221,.92); --dim:rgba(182,193,210,.62); --white:#F4F6F9;
+  --peach:#FF9E8A; --peach2:#ED8266; --steel:#5E7699; --bone:#F0EBE0;
+  --fr:Fraunces,Georgia,'Times New Roman',serif;
+  --in:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:var(--in);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--peach)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* header */
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(13,27,46,.86);backdrop-filter:blur(10px);z-index:10}
+.bar{display:flex;align-items:center;gap:16px;height:60px}
+.mark{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--white);font-weight:800;font-size:19.5px;letter-spacing:-.01em}
+.mark svg{border-radius:6px}
+.bar .spacer{flex:1}
+.bar a.nav{color:var(--dim);text-decoration:none;font-weight:600;font-size:14px}
+.bar a.nav:hover{color:var(--white)}
+.cta{background:linear-gradient(180deg,#FFB29B,#ED8266);color:#0D1B2E !important;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none}
+
+/* hero */
+.hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.kick{font-size:12px;font-weight:700;letter-spacing:.28em;color:var(--peach)}
+h1{font-family:var(--fr);font-weight:900;color:var(--white);font-size:clamp(40px,6vw,64px);line-height:1.02;margin:14px 0 16px}
+.lede{font-size:19px;max-width:60ch;color:var(--dim)}
+
+/* layout: toc + content */
+.grid{display:grid;grid-template-columns:220px 1fr;gap:56px;padding:48px 0 96px;align-items:start}
+nav.toc{position:sticky;top:84px}
+nav.toc h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin:0 0 10px}
+nav.toc a{display:block;color:var(--dim);text-decoration:none;font-size:14px;padding:5px 0;border-left:2px solid transparent;padding-left:12px;margin-left:-14px}
+nav.toc a:hover{color:var(--white)}
+
+section.doc{margin:0 0 52px;scroll-margin-top:84px}
+section.doc h2{font-family:var(--fr);color:var(--white);font-weight:800;font-size:28px;margin:0 0 8px;display:flex;align-items:center;gap:12px}
+section.doc h2 .ix{font-family:var(--in);font-size:13px;font-weight:800;color:var(--peach);background:rgba(255,158,138,.12);border-radius:8px;width:30px;height:30px;display:grid;place-items:center;flex:none}
+section.doc h3{color:var(--white);font-weight:700;font-size:16px;margin:22px 0 4px}
+section.doc p{margin:8px 0}
+section.doc ul{margin:8px 0 8px 4px;list-style:none}
+section.doc li{padding:5px 0 5px 22px;position:relative}
+section.doc li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;border-radius:2px;background:var(--peach2)}
+b,strong{color:var(--white);font-weight:600}
+code{font-family:var(--mono);font-size:.86em;background:rgba(94,118,153,.18);padding:2px 6px;border-radius:5px;color:var(--bone)}
+pre.cmd{font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;overflow-x:auto;color:var(--white)}
+kbd{font-family:var(--in);font-size:12px;font-weight:600;background:var(--panel2);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 7px;color:var(--white);white-space:nowrap}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card h3{margin:0 0 4px}
+.card p{font-size:14px;color:var(--dim);margin:0}
+.card .g{font-size:18px;margin-bottom:6px;display:block}
+
+.note{background:var(--panel);border-left:3px solid var(--peach2);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:14.5px}
+.note b{color:var(--peach)}
+
+table.keys{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+table.keys td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.keys td:first-child{width:170px;white-space:nowrap}
+table.keys tr:last-child td{border-bottom:none}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--dim)}
+@media(max-width:760px){.grid{grid-template-columns:1fr;gap:0}nav.toc{display:none}}
+  /* Language switcher — GitHub Docs style */
+.lang-switch{position:relative;z-index:11}
+.lang-switch details{position:relative}
+.lang-switch summary{list-style:none;cursor:pointer;color:var(--dim);font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:8px}
+.lang-switch summary::-webkit-details-marker{display:none}
+.lang-switch summary::after{content:"";width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.7;transition:transform .15s}
+.lang-switch summary:hover,.lang-switch details[open] summary{color:var(--white)}
+.lang-switch details[open] summary::after{transform:rotate(180deg)}
+.lang-switch summary:focus-visible{outline:2px solid var(--peach);outline-offset:2px}
+.lang-switch ul{position:absolute;right:0;top:calc(100% + 6px);min-width:160px;margin:0;padding:6px;list-style:none;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.28);z-index:10}
+.lang-switch li a{display:block;padding:8px 10px;border-radius:6px;color:var(--text);text-decoration:none;font-size:14px;white-space:nowrap}
+.lang-switch li a:hover{background:var(--panel2);color:var(--white)}
+.lang-switch li a[aria-current="page"]{color:var(--peach);font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="/">
+      <svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#16273E"/><rect x="5" y="5" width="7" height="22" rx="2.5" fill="#5E7699"/><rect x="14" y="5" width="13" height="10" rx="2.5" fill="#FF9E8A"/><rect x="14" y="17" width="13" height="10" rx="2.5" fill="#F0EBE0"/></svg>
+      bento<span style="color:var(--dim);font-weight:500">/help</span>
+    </a>
+    <div class="spacer"></div>
+    <a class="nav" href="https://github.com/nyblnet/bento" target="_blank" rel="noopener">GitHub</a>
+    <a class="nav" href="/agents.md">为 AI agents</a>
+    <a class="cta" href="/slides/">打开编辑器 ↗</a>
+    <div class="lang-switch">
+      <details>
+        <summary>简体中文</summary>
+        <ul>
+          <li><a href="https://bento.page/help" lang="en">English</a></li>
+          <li><a href="https://bento.page/zh-cn/help" aria-current="page">简体中文</a></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kick">BENTO SLIDES</div>
+    <h1>为制作一份演示文稿<br>您需要的一切。</h1>
+    <p class="lede">bento/slides 是一份 HTML 文件，同时是文档、编辑器和演示器。打开它，编辑它，演示它 —— 它保存它自己。以下是 bento/slides 每部分工作的指南。</p>
+  </div>
+</div>
+
+<div class="wrap grid">
+  <nav class="toc">
+    <h4>本页内容</h4>
+    <a href="#start">快速开始</a>
+    <a href="#elements">添加评论</a>
+    <a href="#morph">平滑过渡</a>
+    <a href="#motion">运动 &amp; 特效</a>
+    <a href="#data">图表 &amp; 表格</a>
+    <a href="#media">视频 &amp; 音频</a>
+    <a href="#interactive">交互</a>
+    <a href="#present">演示</a>
+    <a href="#collab">实时协作</a>
+    <a href="#save">保存 &amp; 历史</a>
+    <a href="#ai">用 AI 构建</a>
+    <a href="#keys">键盘快捷键</a>
+  </nav>
+
+  <main>
+    <section class="doc" id="start">
+      <h2><span class="ix">1</span>快速开始</h2>
+      <p>一份 Bento 演示文稿就是一个 <code>.bento.html</code> 文件。在这里，无需安装任何软件，无需创建任何账户。</p>
+      <ul>
+        <li>在任何一款现代浏览器中<b>打开</b>文件 — 它直接进入编辑器界面。</li>
+        <li>在 canvas 上<b>编辑</b>：点击以选择，拖动以移动，拖动 handle 以调整大小。双击文本以键入。</li>
+        <li>用圆形的 ▶ 按钮（右下方）或<kbd>F5</kbd><b>放映</b>  — 真正全屏，按下 → 以前进。</li>
+        <li>用 <kbd>⌘S</kbd> <b>保存</b>。这个文件根据你的改动重写自己。当你编辑时，文件亦会自动保存。</li>
+      </ul>
+      <div class="note">整个应用就在文件<b>里面</b>。电子邮件发送它，把它存在云盘，或者放在 U盘里 — 无论谁打开它，都获得演示文稿<i>以及</i>编辑器，离线，永远。</div>
+    </section>
+
+    <section class="doc" id="elements">
+      <h2><span class="ix">2</span>添加评论</h2>
+      <p>点击顶部的工具栏可以为当前幻灯片添加元素：</p>
+      <div class="cards">
+        <div class="card"><span class="g">T</span><h3>文本</h3><p>双击以编辑。键入<code>**粗体**</code>，<code>*斜体*</code>，<code>`代码`</code>或者<code>- </code> 要点 — 它们像您操作的那样调整格式。<kbd>⌘B</kbd>/<kbd>⌘I</kbd>/<kbd>⌘U</kbd> 亦可。</p></div>
+        <div class="card"><span class="g">◇</span><h3>图形</h3><p>矩形，椭圆，三角形，以及线段。纯色或渐变填充、线条箭头和点、圆角、阴影。</p></div>
+        <div class="card"><span class="g">▦</span><h3>图像</h3><p>在 canvas 上选择一份文件或者直接粘贴（<kbd>⌘V</kbd>）。图像嵌入在文件中，因此它保持自包含。</p></div>
+        <div class="card"><span class="g">▶</span><h3>媒体</h3><p>视频和音频。短视频直接嵌入；对于长视频的话，可以粘贴一个网址（URL）让文件保持较小。<a href="#media">更多见下。</a></p></div>
+        <div class="card"><span class="g">▤</span><h3>表格</h3><p>一份真正的表格 — 在里面直接编辑单元格，用 <kbd>Tab</kbd> 切换单元格。预设了主题，仅需单击它就能将其转换为一张图表。</p></div>
+        <div class="card"><span class="g">▥</span><h3>图表</h3><p>条形图，折线图，饼图，散点图，都由 Bento 自身的引擎绘制。可以可视化地编辑它或者将它链接到一张表格上。<a href="#data">更多见下。</a></p></div>
+      </div>
+      <p>左侧面板显示您的幻灯片；右侧面板显示您所选元素的属性 — 位置，颜色，版面，效果。按下 <kbd>[</kbd> 或 <kbd>]</kbd> 以折叠任意一个面板。</p>
+    </section>
+
+    <section class="doc" id="morph">
+      <h2><span class="ix">3</span>平滑过渡/变形(Morph) — 鲜明移动</h2>这些元素会在它们的位置之间滑动，平滑切换大小，缓缓渐变颜色。这就是最佳的 Bento 演示文稿让人感到充满生机的诀窍。</p>
+      <ul>
+      <p>在连续的两张幻灯片间，给一个元素一个<b>相同的名字 (id)</b>，然后设置下一张幻灯片的切换效果为<b>变形</b> — 当您切换页面时，
+        <li>最简单的方式：<b>复制一张幻灯片</b>，然后移动元素，或者对其重新着色，调整大小。这些共有的元素已经匹配 id 了，所以它们会自动平滑变形。</li>
+        <li>在幻灯片的面板中，将一张幻灯片的切换效果设置为<b>变形（morph）</b>（或者复制一张已经使用变形效果的幻灯片）</li>
+        <li>在每张幻灯片间给一个 logo 或标头设置相同的 id，当其他元素变化时，它能停在那里。</li>
+      </ul>
+    </section>
+
+    <section class="doc" id="motion">
+      <h2><span class="ix">4</span>运动 &amp; 特效</h2>
+      <p>那些电影般的细节——缓缓移动的照片、飞入的元素、递增的数字——都位于右侧面板的 <b>演示设置</b> 部分。选择一个元素，然后：</p>
+      <h3>Ken Burns 效果——照片的缓慢移动</h3>
+      <p>满屏图像上那种栩栩如生、有呼吸感的特质被称为 <b>ambient motion（环境动效）</b>。选择一张图片 → <b>演示设置 → 氛围 → 肯·伯恩斯</b>，然后选择样式和节奏：</p>
+      <ul>
+        <li><b>漂移</b>——无尽的、轻柔的平移与缩放，永远循环。这是默认设置，它能让封面照片像视频一样充满活力。</li>
+        <li><b>缩小 / 放大</b>——一次性的推拉效果，在幻灯片切入时渐渐稳定下来，用于刻意的视觉揭示。</li>
+        <li><b>缩放 %（缩放百分比）</b> 设置移动的范围；<b>缩放秒数</b> 设置持续时间——数值越大，移动就越缓慢s。</li>
+      </ul>
+      <h3>入场——元素如何出现</h3>
+      <p>为元素添加 <b>入场</b> 动画，它将在幻灯片出现时执行动画——<b>淡入淡出</b>、<b>上浮/下方淡入</b> 或从任意边缘 <b>滑入（slide）</b>。有两个旋钮可以控制编排：</p>
+      <ul>
+        <li><b>顺序</b>——错峰效果。序号越小越先出现；给几个元素分配<i>相同</i>的顺序，它们就会一起入场（逐层揭示图表）。</li>
+        <li><b>入场秒数</b>——速度。数值越小越干脆利落，数值越大越慵懒舒缓。</li>
+      </ul>
+      <h3>数字递增</h3>
+      <p>为包含数字的文本元素开启 <b>数字递增</b>，它会在幻灯片切入时从 0 滚动到目标值——这是让统计数据更具冲击力的最简单方法。</p>
+      <div class="note">另外两个运动技巧在别处：<b><a href="#morph">变形</a></b>（§3）能让元素在幻灯片之间平滑滑动；以及 <b><a href="#interactive">循环</a></b>——行进的虚线或沿着你绘制路径移动的元素——能像环绕的圆点一样提供无尽的运动效果。</div>
+    </section>
+
+    <section class="doc" id="data">
+      <h2><span class="ix">5</span>图表 &amp; 表格</h2>
+      <h3>图表</h3>
+      <p>添加一个图表，然后在右侧面板设置它的外观：类型，系列，颜色，第二 Y轴，每个轴的最小/最大值，以及可编辑的数据表格。<b>当您演示的时候</b>，图表都是<b>活动的</b> — 工具提示，缩放以及数据，当一个条形图变成饼图的时候平滑移动。</p>
+      <h3>表格 → 图表，链接的</h3>
+      <p>从表格面板将表格转换为图表，两者保持<b>关联</b>：编辑表格中的数字，图表会自动更新。非常适合显示数据和趋势并排的幻灯片。</p>
+    </section>
+
+    <section class="doc" id="media">
+      <h2><span class="ix">6</span>视频 &amp; 音频</h2>
+      <p>从工具栏添加<b>媒体</b>，然后选择一份视频或音频文件。Bento 采用了一种<b>混合</b>策略，因此你的文件永远不会变得臃肿：</p>
+      <ul>
+        <li><b>小片段内嵌</b>在 <code>.bento.html</code> 中——完全自包含，支持离线播放。</li>
+        <li><b>大文件：</b>当片段较大时，Bento 会建议将其保留为<b>链接</b>——在面板中粘贴托管 URL，演示文稿就能保持小巧（只是播放时需要联网）。</li>
+        <li><b>播放</b>选项：控制条、循环、静音以及<b>自动播放</b>。自动播放仅在演示时生效，且浏览器要求视频静音才能自动播放。</li>
+        <li><b>封面图</b>（视频）：在播放前显示的一张静态图像。</li>
+      </ul>
+      <div class="note"><b>提示：</b>内嵌一个简短的 Logo 动画或 10 秒的演示片段；通过链接引用完整的录屏。将一个 2 分钟的视频作为数据内嵌，可能会让文件变成 100&nbsp;MB，导致打开和保存极其缓慢。</div>
+    </section>
+
+    <section class="doc" id="interactive">
+      <h2><span class="ix">7</span>交互性</h2>
+      <ul>
+        <li><b>链接与状态幻灯片：</b>为元素添加一个指向其他幻灯片的链接。<b>状态幻灯片</b>是一种隐藏的变体，只能通过点击到达——方向键会跳过它，按 <kbd>←</kbd> 返回父页面。非常适合“点击下钻查看”而不打乱线性叙事。</li>
+        <li><b>悬停显示：</b>当指针悬停在元素上时，就地替换内容。</li>
+        <li><b>循环：</b>一条行进的虚线，或者一个沿着你在画布上绘制的运动路径移动的元素——支持逐点变速。</li>
+        <li><b>评论：</b>使用 💬 工具（<kbd>C</kbd>）将评论固定在某个元素或位置。评论存在于文件中，但绝不会在演示或打印时显示。</li>
+      </ul>
+    </section>
+
+    <section class="doc" id="present">
+      <h2><span class="ix">8</span>演示</h2>
+      <ul>
+        <li>通过圆形的 <b>▶</b> 按钮（全屏）或旁边的小按钮（填充标签页，用于共享窗口）开始演示。<kbd>F</kbd> 切换全屏；<kbd>Esc</kbd> 结束放映。</li>
+        <li><b>演讲者视图</b>（<kbd>S</kbd>）：当前幻灯片、下一页、你的备注以及计时器——显示在一个单独的窗口中。</li>
+        <li><b>激光笔</b>（<kbd>L</kbd>）：切换虚拟激光笔。</li>
+        <li><b>第二屏幕：</b>在幻灯片面板的<b>演讲者备注</b>区域，启用一次“使用第二屏幕显示备注”（授予浏览器窗口权限）。之后按 <kbd>S</kbd> 就会自动将备注显示在你的另一块屏幕上。</li>
+        <li>为每页幻灯片编写<b>演讲者备注</b>——它们随文件同行，并可作为演讲提示。</li>
+      </ul>
+    </section>
+
+    <section class="doc" id="collab">
+      <h2><span class="ix">9</span>实时协作</h2>
+      <p>点击 <b>Live</b> 启动会话——此时<b>文件本身就是邀请函</b>。任何打开副本的人都能加入房间；编辑内容实时合并，离线更改也会在他们回归时重新合并。</p>
+      <ul>
+        <li><b>端到端加密：</b>密钥就在你的文件里。中继服务器只能看到密文——它无法读取你的演示文稿。</li>
+        <li><b>无账号，无云端：</b>分享就是分享文件本身。</li>
+        <li>通过 Live 弹出窗口设置你的名字，让你的光标有专属标识。“轮换密钥”可撤销旧副本的访问权限。</li>
+      </ul>
+    </section>
+
+    <section class="doc" id="save">
+      <h2><span class="ix">10</span>保存与版本历史</h2>
+      <ul>
+        <li><kbd>⌘S</kbd> 就地重写文件（或者根据你的浏览器行为，首次会下载一份副本）。</li>
+        <li><b>自动保存</b>在你工作时提供本地安全网——如果标签页崩溃，重新打开时会提示你恢复。</li>
+        <li><b>版本历史：</b>保存 → 版本历史会列出本地较早的快照；你可以恢复任意一个（此操作可撤销）。</li>
+        <li><b>密码保护</b>在保存菜单中；<b>只读</b>和<b>仅演示</b>副本在共享菜单中，用于分发和私密演示文稿。</li>
+      </ul>
+    </section>
+
+    <section class="doc" id="ai">
+      <h2><span class="ix">11</span>用 AI 构建</h2>
+      <p>因为文档就是文件内部的纯 JSON，任何 AI 都能编写或编辑演示文稿。把 <code>.bento.html</code> 丢进对话或项目（Cowork、Codex、Gemini、ChatGPT 项目）中并下达指令，或者让编码智能体直接处理磁盘上的文件。</p>
+      <p>智能助手应该首先阅读的指南是 <a href="/agents.md">bento.page/agents.md</a>——它将你的素材映射到正确的功能，让你得到一份真正的演示文稿，而不是一堵文字墙。</p>
+
+      <h3><b>bento-slides</b> 技能</h3>
+      <p>安装一次该技能，你的助手就能自动使用正确的功能创作演示文稿——它甚至能<b>自行下载最新的 Bento 应用</b>，因此你可以一次提问就从空文件夹得到一份完成并打开的演示文稿。每当你请求幻灯片，或直接运行 <code>/bento-slides</code> 时，它就会触发。</p>
+      <p><b>Claude Code</b> — 从插件商店安装：</p>
+      <pre class="cmd">/plugin marketplace add nyblnet/bento
+/plugin install bento-slides@bento</pre>
+      <p>……或者作为普通的个人技能安装（无需重启；重新运行即可更新；使用 <code>.claude/skills/…</code> 将其作用域限定在单个项目内）：</p>
+      <pre class="cmd">mkdir -p ~/.claude/skills/bento-slides
+curl -fsSL https://bento.page/skills/bento-slides/SKILL.md \
+  -o ~/.claude/skills/bento-slides/SKILL.md</pre>
+      <p><b>Claude.ai &amp; Claude Desktop</b> — <a href="/skills/bento-slides.zip" download>下载技能包（.zip）</a>，然后在 <i>设置 → 技能</i> 下上传。</p>
+      <p><b>ChatGPT · Codex · Gemini</b> — 无需安装：将 <a href="/agents.md">bento.page/agents.md</a> 附加到 ChatGPT 项目中，将其作为 <code>AGENTS.md</code> 放在你的演示文稿旁边供 Codex 使用，或者将其添加到 Gem 中。</p>
+    </section>
+
+    <section class="doc" id="keys">
+      <h2><span class="ix">12</span>键盘快捷键</h2>
+      <table class="keys">
+        <tr><td><kbd>⌘S</kbd></td><td>保存</td></tr>
+        <tr><td><kbd>⌘Z</kbd> · <kbd>⌘⇧Z</kbd></td><td>撤销 · 重做</td></tr>
+        <tr><td><kbd>⌘C</kbd> · <kbd>⌘V</kbd></td><td>复制 · 粘贴元素 — 或在未选择任何内容时复制整个幻灯片（在不同演示文稿之间也可使用）</td></tr>
+        <tr><td><kbd>⌘D</kbd></td><td>复制选中内容</td></tr>
+        <tr><td><kbd>⌘G</kbd> · <kbd>⌘⇧G</kbd></td><td>组合 · 取消组合</td></tr>
+        <tr><td><kbd>⌘B</kbd> · <kbd>⌘I</kbd> · <kbd>⌘U</kbd></td><td>（当编辑文本时）加粗 · 倾斜 · 下划线</td></tr>
+        <tr><td><kbd>C</kbd></td><td>评论模式</td></tr>
+        <tr><td><kbd>[</kbd> · <kbd>]</kbd></td><td>折叠左侧 · 右侧面板</td></tr>
+        <tr><td><kbd>?</kbd></td><td>键盘快捷键 &amp; 提示</td></tr>
+        <tr><td><kbd>F5</kbd></td><td>放映</td></tr>
+        <tr><td><kbd>F</kbd></td><td>放映时切换到全屏</td></tr>
+        <tr><td><kbd>S</kbd></td><td>演讲者视图</td></tr>
+        <tr><td><kbd>L</kbd></td><td>放映时打开激光笔</td></tr>
+        <tr><td><kbd>←</kbd> · <kbd>→</kbd></td><td>上一张 · 下一张幻灯片</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>结束放映</td></tr>
+      </table>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="/">bento.page</a> · <a href="/agents.md">agents.md</a> · <a href="https://github.com/nyblnet/bento" target="_blank" rel="noopener">GitHub</a> · <a href="/slides/">打开编辑器</a><br>
+    单文件 — 集合演示文稿，查看器和编辑器。
+  </div>
+</footer>
+</body>
+</html>

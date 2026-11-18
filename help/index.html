@@ -84,6 +84,19 @@ table.keys tr:last-child td{border-bottom:none}
 footer{border-top:1px solid var(--line);padding:32px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--dim)}
 @media(max-width:760px){.grid{grid-template-columns:1fr;gap:0}nav.toc{display:none}}
+  /* Language switcher — GitHub Docs style */
+.lang-switch{position:relative;z-index:11}
+.lang-switch details{position:relative}
+.lang-switch summary{list-style:none;cursor:pointer;color:var(--dim);font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:8px}
+.lang-switch summary::-webkit-details-marker{display:none}
+.lang-switch summary::after{content:"";width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.7;transition:transform .15s}
+.lang-switch summary:hover,.lang-switch details[open] summary{color:var(--white)}
+.lang-switch details[open] summary::after{transform:rotate(180deg)}
+.lang-switch summary:focus-visible{outline:2px solid var(--peach);outline-offset:2px}
+.lang-switch ul{position:absolute;right:0;top:calc(100% + 6px);min-width:160px;margin:0;padding:6px;list-style:none;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.28);z-index:10}
+.lang-switch li a{display:block;padding:8px 10px;border-radius:6px;color:var(--text);text-decoration:none;font-size:14px;white-space:nowrap}
+.lang-switch li a:hover{background:var(--panel2);color:var(--white)}
+.lang-switch li a[aria-current="page"]{color:var(--peach);font-weight:600}
 </style>
 </head>
 <body>
@@ -97,6 +110,15 @@ footer a{color:var(--dim)}
     <a class="nav" href="https://github.com/nyblnet/bento" target="_blank" rel="noopener">GitHub</a>
     <a class="nav" href="/agents.md">For AI agents</a>
     <a class="cta" href="/slides/">Open the editor ↗</a>
+    <div class="lang-switch">
+      <details>
+        <summary>English</summary>
+        <ul>
+          <li><a href="https://bento.page/help" aria-current="page">English</a></li>
+          <li><a href="https://bento.page/zh-cn/help" lang="zh-CN">简体中文</a></li>
+        </ul>
+      </details>
+    </div>
   </div>
 </header>
 

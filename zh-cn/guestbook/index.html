@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>留言簿（The Guestbook）— 一份实时演示文稿，属于每个人 — bento.page</title>
+<meta name="description" content="一场公开实验：一份所有人都能同时、实时编辑的演示文稿，且端到端加密。打开文件，你就进入了房间。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316273E'/%3E%3Crect x='5' y='5' width='7' height='22' rx='2.5' fill='%235E7699'/%3E%3Crect x='14' y='5' width='13' height='10' rx='2.5' fill='%23FF9E8A'/%3E%3Crect x='14' y='17' width='13' height='10' rx='2.5' fill='%23F0EBE0'/%3E%3C/svg%3E">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0D1B2E; color: rgba(182,193,210,0.92); font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: grid; place-items: center; padding: 48px 24px; }
+.card { max-width: 660px; }
+.kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.3em; color: #FF9E8A; }
+h1 { font-family: Fraunces, Georgia, serif; font-weight: 900; color: #fff; font-size: clamp(40px, 7vw, 66px); line-height: 1; margin: 16px 0 20px; }
+p { line-height: 1.7; margin-bottom: 16px; }
+b { color: #fff; font-weight: 600; }
+ul { margin: 0 0 18px 1.2em; line-height: 1.9; }
+.btn { display: inline-block; padding: 15px 30px; border-radius: 999px; font-weight: 700; color: #0D1B2E; text-decoration: none; background: linear-gradient(180deg, #FFB29B, #ED8266); box-shadow: 0 10px 26px rgba(0,0,0,0.4), 0 0 42px rgba(255,238,214,0.22); }
+.ghost { display: inline-block; margin-left: 12px; padding: 14px 24px; border-radius: 999px; color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); font-weight: 600; }
+.fine { margin-top: 24px; font-size: 13px; line-height: 1.7; color: rgba(182,193,210,0.55); }
+.fine a { color: rgba(182,193,210,0.8); }
+/* Language switcher — fixed to the viewport's top-right */
+.lang-switch{position:fixed;top:20px;right:20px;z-index:20}
+.lang-switch details{position:relative}
+.lang-switch summary{list-style:none;cursor:pointer;color:rgba(182,193,210,.7);font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(13,27,46,.6);backdrop-filter:blur(6px)}
+.lang-switch summary::-webkit-details-marker{display:none}
+.lang-switch summary::after{content:"";width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:.7;transition:transform .15s}
+.lang-switch summary:hover,.lang-switch details[open] summary{color:#fff;border-color:rgba(255,255,255,.3)}
+.lang-switch details[open] summary::after{transform:rotate(180deg)}
+.lang-switch summary:focus-visible{outline:2px solid #FF9E8A;outline-offset:2px}
+.lang-switch ul{position:absolute;right:0;top:calc(100% + 6px);min-width:150px;margin:0;padding:6px;list-style:none;background:#16273E;border:1px solid rgba(182,193,210,.16);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:10}
+.lang-switch li a{display:block;padding:8px 10px;border-radius:6px;color:rgba(196,206,221,.92);text-decoration:none;font-size:14px;white-space:nowrap}
+.lang-switch li a:hover{background:#1B2F49;color:#fff}
+.lang-switch li a[aria-current="page"]{color:#FF9E8A;font-weight:600}
+</style>
+</head>
+<body>
+  <div class="lang-switch">
+  <details>
+    <summary>简体中文</summary>
+    <ul>
+      <li><a href="https://bento.page/guestbook" lang="en">English</a></li>
+      <li><a href="https://bento.page/zh-cn/guestbook" aria-current="page">简体中文</a></li>
+    </ul>
+  </details>
+</div>
+<div class="card">
+  <div class="kicker">一场公开实验</div>
+  <h1>一份演示文稿，属于每个人。</h1>
+  <p>留言簿（The Guestbook）是一份单一的演示文稿文件，<b>所有人都能同时、实时地编辑它</b>。无需登录，也没有任何服务器能读取它——加密密钥随文件一起走，所以打开它，<i>就等于</i>加入了它。在墙上留个便条，看陌生人的光标四处游荡，再带一份副本回家。</p>
+  <ul>
+    <li><b>添一笔，别抹掉。</b>友善一点。什么都可以，唯独不许刻薄。</li>
+    <li><b>它会按计划重置</b>——换新密钥，墙面清空。好看的纪元会被存档，其余的一切随风蒸发。</li>
+    <li>你保存的副本永远可用，离线也行。这就是产品本身。</li>
+  </ul>
+  <a class="btn" href="/guestbook.bento.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:7px"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>打开留言簿</a>
+  <a class="ghost" href="/guestbook.bento.html" download="Guestbook.bento.html">⤓ 下载</a>
+  <p class="fine">底层其实用的就是 Bento 自带的协作能力——端到端加密（AES-GCM）、一个只存储密文的 <a href="/">盲中继</a>，以及一个能合并所有人编辑的 CRDT。这个页面没有专门做任何特殊处理。通过 <b>Live</b> 按钮设置你的名字，这样你的光标就会带上标识。</p>
+</div>
+</body>
+</html>
